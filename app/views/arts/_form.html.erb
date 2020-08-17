@@ -1,0 +1,30 @@
+<%= form_with(model: art, local: true) do |form| %>
+  <% if art.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(art.errors.count, "error") %> prohibited this art from being saved:</h2>
+
+      <ul>
+        <% art.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="container my-5" style="width:500px">
+      <div class="form_group my-2">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+
+      <div class="form_group my-2">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: 'form-control' %>
+      </div>
+
+      <div class="form_group my-2">
+        <%= form.submit %>
+        <%= link_to 'Back', arts_path, class: 'btn btn-outline-info mx-2' %>
+      </div>
+    </div>
+  <% end %>
