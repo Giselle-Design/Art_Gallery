@@ -1,5 +1,7 @@
 class ArtsController < ApplicationController
   before_action :set_art, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize!, only: [:edit, :update, :destroy]
 
   # GET /arts
   # GET /arts.json
@@ -10,6 +12,8 @@ class ArtsController < ApplicationController
   # GET /arts/1
   # GET /arts/1.json
   def show
+    @comment = Comment.new
+    @comments = @art.comments.order(created_at: :desc)
   end
 
   # GET /arts/new
@@ -25,14 +29,14 @@ class ArtsController < ApplicationController
   # POST /arts.json
   def create
     @art = Art.new(art_params)
-
+    @art.user = current_user
     respond_to do |format|
       if @art.save
         format.html { redirect_to @art, notice: 'Art was successfully created.' }
-        format.json { render :show, status: :created, location: @art }
+        # format.json { render :show, status: :created, location: @art }
       else
         format.html { render :new }
-        format.json { render json: @art.errors, status: :unprocessable_entity }
+        # format.json { render json: @art.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +46,11 @@ class ArtsController < ApplicationController
   def update
     respond_to do |format|
       if @art.update(art_params)
-        format.html { redirect_to @art, notice: 'Art was successfully updated.' }
-        format.json { render :show, status: :ok, location: @art }
+        format.html { redirect_to art_path(@art), notice: 'Art was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @art }
       else
         format.html { render :edit }
-        format.json { render json: @art.errors, status: :unprocessable_entity }
+        # format.json { render json: @art.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +61,7 @@ class ArtsController < ApplicationController
     @art.destroy
     respond_to do |format|
       format.html { redirect_to arts_url, notice: 'Art was successfully destroyed.' }
-      format.json { head :no_content }
+      # format.json { head :no_content }
     end
   end
 
@@ -69,6 +73,10 @@ class ArtsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def art_params
-      params.require(:art).permit(:title, :description)
+      params.require(:art).permit(:title, :description, :image)
     end
+
+    def authorize!
+      redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @art)
+  end
 end

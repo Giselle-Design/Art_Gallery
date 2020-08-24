@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-    <div class="container my-5" style="width:500px">
+    <div class="container my-5">
       <div class="form_group my-2">
         <%= form.label :title %>
         <%= form.text_field :title, class: 'form-control' %>
@@ -23,8 +23,13 @@
       </div>
 
       <div class="form_group my-2">
-        <%= form.submit %>
-        <%= link_to 'Back', arts_path, class: 'btn btn-outline-info mx-2' %>
+        <%= form.label :image, for: "exampleFormControlFile1"%>
+        <%= form.file_field :image, class: 'form-control-file', id: "exampleFormControlFile1" %>
+      </div>
+
+      <div class="form_group my-4">
+        <%= form.submit    class: 'btn btn-primary' %>
+        <%= link_to 'Back', arts_path, class: 'btn btn-primary mx-2' %>
       </div>
     </div>
   <% end %>

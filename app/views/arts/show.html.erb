@@ -1,26 +1,89 @@
 
-<p id="notice"><%= notice %></p>
-
-<div class="container my-5 text-center">
-  <p>
-    <strong>Title:</strong>
-    <%= @art.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @art.description %>
-  </p>
-
-  
-  <%= link_to 'Edit', edit_art_path(@art) %> |
-  <%= link_to 'Back', arts_path %>
+<div class="container mt-5">
+   <p class="text-center" id="notice"><%= notice %></p>
 </div>
+
+<div class="container my-5">
+<div class="card mb-3 p-3">
+  <%= image_tag @art.image.variant(resize: '500X500'), class: "card-img-top"  if @art.image.attached? %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @art.title %></h5>
+    <p class="card-text"><%= @art.description %></p>
+    <p class="card-text"><small class="text-muted"><%= @art.created_at %></small></p>
+    <p class="text-muted"><%= @art.user.full_name %></p>
+    <% if can? :crud, @art %>
+      <%= link_to 'Delete', @art, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2', id:'delete'%>
+      <%= link_to 'Edit', edit_art_path(@art), class: 'btn btn-primary mr-2' %>
+    <% end %>
+    <%= link_to 'Back', arts_path,  class: 'btn btn-primary mr-2' %>
+  </div>
+</div>
+</div>
+
+<div class="container mb-3">
+  <%= form_with(model: [@art, @comment], local: true) do |f| %>
+      <% if @comment.errors.any? %>
+          <ul>
+              <% @comment.errors.full_messages.each do |msg| %>
+                  <li class="text-danger"><%= msg %></li>
+              <% end %>
+          </ul>
+      <% end %>
+
+      <div class="form-group">
+         <%= f.text_area(
+             :body,
+             cols: 50,
+             rows: 5,
+             placeholder: "What are your thoughts?",
+             class: "form-control"
+         )%>
+      </div>
+
+      <%= f.submit "Post", class: "btn-success btn-lg" %>
+  <% end %>
+</div>
+
+
+<div class="container mb-5">
+  <ul class="list-group answer-list">
+    <%  @comments.each do |comment| %>
+        <li class="list-group-item mb-2">
+            <p>
+                <%= comment.body %>
+            </p>
+            <p>
+            <small>
+               <% if can? :crud, comment %>
+              <%= link_to(
+                "Delete",
+                art_comment_path(@art, comment),
+                method: :delete,
+                data: {
+                    confirm: "Are you sure?"
+                },
+                class: "btn btn-danger btn-sm mr-2"
+            )%>
+            <% end %>
+            </small>
+
+            <small>
+                Posted <%= time_ago_in_words(comment.created_at) %> By <strong><%= comment.user.full_name %></strong>
+            </small>
+            </p>
+        </li>
+    <% end %>
+  </ul>
+</div>
+
+
 
 <style media="screen">
   body{
-    background: #00F260;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #44A08D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #093637, #44A08D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   }
+
 </style>

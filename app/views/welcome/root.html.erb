@@ -1,43 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script>
-function startTime() {
-  var today = new Date();
-  var h = today.getHours();
-  var m = today.getMinutes();
-  var s = today.getSeconds();
-  m = checkTime(m);
-  s = checkTime(s);
-  document.getElementById('txt').innerHTML =
-  h + ":" + m + ":" + s;
-  var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
-  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-  return i;
-}
-</script>
-</head>
+   <head>
+      <script>
+         function startTime() {
+           var today = new Date();
+           var h = today.getHours();
+           var m = today.getMinutes();
+           var s = today.getSeconds();
+           m = checkTime(m);
+           s = checkTime(s);
+           document.getElementById('txt').innerHTML =
+           h + ":" + m + ":" + s;
+           var t = setTimeout(startTime, 1000);
+         }
+         function checkTime(i) {
+           if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+           return i;
+         }
+      </script>
+   </head>
 
-<body onload="startTime()">
+   <body onload="startTime()">
 
-<div id="txt" class="container text-center display-1"></div>
 
-</body>
+             <div class="container">
+               <p class="lead my-3 text-center display-4 text-white">Welcome to Art Galley</p>
+               <p id="txt" class=" text-center display-1 text-white"></p>
+             </div>
+
+
+   </body>
 </html>
 
-<style media="screen">
-   #txt {
-     margin-top: 350px;
-   }
 
-   body{
-   background-color: #ffe6cc; 
-   /* background: #C6FFDD;  /* fallback for old browsers */ */
-   /* background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */ */
-   /* background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ */
-    }
+
+
+
+
+
+<style media="screen">
+body{
+  background-image: url("https://images.unsplash.com/photo-1595162321500-cd494be4b4d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1928&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+  .container {
+    margin-top: 350px
+  }
+
+
 </style>
 
 

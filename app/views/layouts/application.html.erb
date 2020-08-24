@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ArtGallery</title>
+    <title>Art Gallery</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,101 @@
   </head>
 
   <body>
-    <%= yield %>
+
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+<%= link_to 'Art Gallery', root_path, class: 'navbar-brand'%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+          <%= link_to 'Home', home_path,  class: 'nav-link'%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Museum', museum_path,  class: 'nav-link'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Arts', arts_path,  class: 'nav-link'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Create Art', new_art_path,  class: 'nav-link'%>
+        </li>
+        <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Pallete
+              </a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+             <a href="https://psiloveyou.xyz/relationships-dont-have-to-be-hard-work-a8d5a27344ff"  class="dropdown-item">Action</a>
+             <a class="dropdown-item" href="#">Another action</a>
+             <a class="dropdown-item" href="#">Something else here</a>
+           </div>
+        </li>
+        <% if user_signed_in? %>
+            <li class="nav-item nav-link">
+               <a><%= current_user.full_name%></a>
+            </li>
+            <li class="nav-item">
+             <%= link_to "Log Out", session_path, method: :delete, class: 'nav-link' %>
+            </li>
+        <% else %>
+            <li class="nav-item">
+             <%= link_to "Sign In", new_session_path,  class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+             <%= link_to "Sign Up", new_user_path,  class: 'nav-link' %>
+            </li>
+        <% end %>
+    </ul>
+
+  </div>
+</nav>
+  <%= yield %>
+    <!-- <footer  id = "pagefooter" class= "my-5">
+      <div class="container my-5" style="height:200px">
+      </div>
+    </footer> -->
+
   </body>
 </html>
+
+
+
+<style media="screen">
+  #pagefooter {
+    background:#efeff5
+  }
+
+.navbar.scrolled {
+    background: green;
+    transition: background 500ms;
+}
+
+#mainNavbar {
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+#mainNavbar .nav-link {
+    color: white;
+}
+
+#mainNavbar .nav-link:hover {
+    color: green;
+}
+
+#mainNavbar .navbar-brand {
+    color: green;
+    font-size: 1.2rem;
+</style>
+
+
+
+<script>
+         $(function () {
+             $(document).scroll(function () {
+                 var $nav = $("#mainNavbar");
+                 $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+             });
+         });
+</script>
