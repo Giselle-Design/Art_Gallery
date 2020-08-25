@@ -1,6 +1,6 @@
 
 <div class="container mt-5">
-   <p class="text-center" id="notice"><%= notice %></p>
+   <p class="text-center text-white" id="notice"><%= notice %></p>
 </div>
 
 <div class="container my-5">
@@ -16,6 +16,11 @@
       <%= link_to 'Edit', edit_art_path(@art), class: 'btn btn-primary mr-2' %>
     <% end %>
     <%= link_to 'Back', arts_path,  class: 'btn btn-primary mr-2' %>
+    <% if @like.present? %>
+       <%= link_to 'Unlike', like_path(@like), method: :delete,  class: 'liked btn btn-success mr-2' %>
+    <% else %>
+        <%= link_to 'Like',  art_likes_path(@art), method: :post, class: 'liked btn btn-success mr-2' %>
+    <% end %>
   </div>
 </div>
 </div>
@@ -84,6 +89,10 @@
     background: -webkit-linear-gradient(to right, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #093637, #44A08D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+  }
+
+  .liked {
+    float: right
   }
 
 </style>

@@ -14,6 +14,9 @@ class ArtsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @art.comments.order(created_at: :desc)
+    #show the likes inside the arts so we need to find the users who 
+    #like the arts and save it in @like variable
+    @like = @art.likes.find_by(user: current_user)
   end
 
   # GET /arts/new

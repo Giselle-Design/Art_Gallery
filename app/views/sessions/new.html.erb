@@ -1,7 +1,11 @@
+<div class=" welcome container">
+  <h1 class="text-center">Welcome</h1>
+</div>
 
-<div class="container mt-5">
+
+<div class="container mt-5" style="width:800px">
    <div class="shadow-sm p-3 mb-5 bg-white rounded">
-       <h1>Sign In</h1>
+       <h2 class="mb-4">Sign In</h2>
        <%= form_with url: session_path, local: true do |f| %>
            <div class="form-group">
                <%= f.label :email %>
@@ -19,8 +23,25 @@
 
 <style media="screen">
   body {
-    background: #a8ff78;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #0F2027;  
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); 
   }
+
+
+  .welcome{
+    margin-top: 100px;
+    }
+
+  .sign{
+    margin-top: 50px;  
+    }
+
+
+  h1 {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 </style>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get("/museum", to: "welcome#museum")
 
   resources :arts do
+  resources :likes, shallow: true, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
   end
 

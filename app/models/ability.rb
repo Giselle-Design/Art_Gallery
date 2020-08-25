@@ -26,5 +26,15 @@ class Ability
       comment.user == user 
     end
 
+
+    can(:like, Art) do |art|
+      user.persisted? && art.user != user
+    end
+   
+
+    can(:destroy, Like) do |like|
+      like.user == user 
+    end
+
   end
 end

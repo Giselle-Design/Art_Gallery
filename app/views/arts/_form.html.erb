@@ -1,3 +1,4 @@
+
 <%= form_with(model: art, local: true) do |form| %>
   <% if art.errors.any? %>
     <div id="error_explanation">
@@ -11,18 +12,18 @@
     </div>
   <% end %>
 
-    <div class="container my-5">
-      <div class="form_group my-2">
+    <div class="container my-5" style="width:800px">
+      <div class="form_group my-2 text-white">
         <%= form.label :title %>
         <%= form.text_field :title, class: 'form-control' %>
       </div>
 
-      <div class="form_group my-2">
+      <div class="form_group my-2 text-white">
         <%= form.label :description %>
         <%= form.text_area :description, class: 'form-control' %>
       </div>
 
-      <div class="form_group my-2">
+      <div class="form_group my-2 text-white">
         <%= form.label :image, for: "exampleFormControlFile1"%>
         <%= form.file_field :image, class: 'form-control-file', id: "exampleFormControlFile1" %>
       </div>
@@ -33,3 +34,7 @@
       </div>
     </div>
   <% end %>
+
+
+
+ 
