@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
+before_action :authenticate_user!, only: [:create, :destroy]
 
-      before_action :authenticate_user!, only: [:create, :destroy]
     def create 
        art = Art.find params[:art_id]
        like = Like.new(art: art, user: current_user)

@@ -6,7 +6,7 @@ class ArtsController < ApplicationController
   # GET /arts
   # GET /arts.json
   def index
-    @arts = Art.all
+    @arts = Art.all.all_with_comment_counts.order('updated_at DESC')
   end
 
   # GET /arts/1
@@ -28,6 +28,13 @@ class ArtsController < ApplicationController
   def edit
   end
 
+
+  def liked
+    # all the art that this particular logged in user has liked
+    @arts = current_user.liked_arts.all_with_comment_counts.order(created_at: :desc)
+   
+  end
+
   # POST /arts
   # POST /arts.json
   def create
@@ -36,10 +43,10 @@ class ArtsController < ApplicationController
     respond_to do |format|
       if @art.save
         format.html { redirect_to @art, notice: 'Art was successfully created.' }
-        # format.json { render :show, status: :created, location: @art }
+        format.json { render :show, status: :created, location: @art }
       else
         format.html { render :new }
-        # format.json { render json: @art.errors, status: :unprocessable_entity }
+        format.json { render json: @art.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,10 +57,10 @@ class ArtsController < ApplicationController
     respond_to do |format|
       if @art.update(art_params)
         format.html { redirect_to art_path(@art), notice: 'Art was successfully updated.' }
-        # format.json { render :show, status: :ok, location: @art }
+        format.json { render :show, status: :ok, location: @art }
       else
         format.html { render :edit }
-        # format.json { render json: @art.errors, status: :unprocessable_entity }
+        format.json { render json: @art.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,7 +71,7 @@ class ArtsController < ApplicationController
     @art.destroy
     respond_to do |format|
       format.html { redirect_to arts_url, notice: 'Art was successfully destroyed.' }
-      # format.json { head :no_content }
+      format.json { head :no_content }
     end
   end
 

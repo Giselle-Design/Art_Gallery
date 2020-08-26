@@ -11,7 +11,7 @@
 
   <body>
 
-<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-around">
 <%= link_to 'Art Gallery', root_path, class: 'navbar-brand'%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -32,20 +32,25 @@
         </li>
         <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Pallete
+              Fun
               </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-             <a href="https://psiloveyou.xyz/relationships-dont-have-to-be-hard-work-a8d5a27344ff"  class="dropdown-item">Action</a>
+             <a href="http://192.168.1.70:3001"  class="dropdown-item">Pokemon</a>
              <a class="dropdown-item" href="#">Another action</a>
              <a class="dropdown-item" href="#">Something else here</a>
            </div>
         </li>
         <% if user_signed_in? %>
-            <li class="nav-item nav-link">
-               <a><%= current_user.full_name%></a>
+            <li class="nav-item">
+             <%= link_to "Favourite Arts", liked_arts_path,  class: 'nav-link' %>
             </li>
+            
             <li class="nav-item">
              <%= link_to "Log Out", session_path, method: :delete, class: 'nav-link' %>
+            </li> 
+            
+            <li class="nav-item nav-link">
+               <a><%= current_user.full_name%></a>
             </li>
         <% else %>
             <li class="nav-item">
@@ -59,6 +64,15 @@
 
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
   <%= yield %>
     <!-- <footer  id = "pagefooter" class= "my-5">
       <div class="container my-5" style="height:200px">
@@ -98,16 +112,13 @@
     font-size: 1.2rem;
 }
 
+.nav-link {
+  float:right;
+}
+
      
 </style>
 
 
 
-<script>
-         $(function () {
-             $(document).scroll(function () {
-                 var $nav = $("#mainNavbar");
-                 $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
-             });
-         });
-</script>
+
