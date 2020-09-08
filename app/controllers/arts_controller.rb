@@ -7,6 +7,11 @@ class ArtsController < ApplicationController
   # GET /arts.json
   def index
     @arts = Art.all.all_with_comment_counts.order('updated_at DESC')
+  # curl -H "Accept: application/json" http://localhost:3000/arts
+    respond_to do |format|
+      format.html {render}
+      format.json {render json: @arts}
+    end
   end
 
   # GET /arts/1

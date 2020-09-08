@@ -21,14 +21,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 3.1'
 gem 'bootstrap', '~> 4.5'
-gem "font-awesome-rails"
+gem 'fontawesome-rails', '~> 4.0', '>= 4.0.3.2'
 gem "mini_magick"
+
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'active_model_serializers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -46,6 +49,7 @@ group :development do
   gem 'pry'
   gem 'pry-rails'
   gem 'faker'
+  gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

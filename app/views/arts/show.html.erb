@@ -10,7 +10,7 @@
     <h5 class="card-title"><%= @art.title %></h5>
     <p class="card-text"><%= @art.description %></p>
     <p class="card-text"><small class="text-muted"><%= @art.created_at %></small></p>
-    <p class="text-muted"><%= @art.user.full_name %></p>
+    <p class="text-muted">Painted By <strong><%= @art.user.full_name %></strong></p>
     <% if can? :crud, @art %>
       <%= link_to 'Delete', @art, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2', id:'delete'%>
       <%= link_to 'Edit', edit_art_path(@art), class: 'btn btn-primary mr-2' %>
@@ -73,7 +73,7 @@
             </small>
 
             <small>
-                Posted <%= time_ago_in_words(comment.created_at) %> By <strong><%= comment.user.full_name %></strong>
+                Posted <%= time_ago_in_words(comment.created_at) %>By <strong><%= comment.user.full_name %></strong>
             </small>
             </p>
         </li>
@@ -85,9 +85,9 @@
 
 <style media="screen">
   body{
-    background: #44A08D;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #093637, #44A08D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #44A08D;
+    background: -webkit-linear-gradient(to right, #093637, #44A08D);
+    background: linear-gradient(to right, #093637, #44A08D);
 
   }
 
