@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       if @user.save
           session[:user_id] = @user.id
           flash.delete(:warning)
-          redirect_to root_path
+          redirect_to home_path
       else
           flash[:warning] = "Unable to create user"
           render :new

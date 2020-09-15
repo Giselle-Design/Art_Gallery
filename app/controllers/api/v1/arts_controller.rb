@@ -4,7 +4,7 @@ class Api::V1::ArtsController < ApplicationController
     def index
         #curl http://localhost:3000/api/v1/arts
         arts = Art.order(created_at: :desc)
-        render(json: arts)
+        render(json: arts, each_serializer: ArtCollectionSerializer)
     end
 
     def show

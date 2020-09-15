@@ -8,7 +8,7 @@ class ArtSerializer < ActiveModel::Serializer
     :updated_at,
     :like_count
   )
-# to include associated models, use the same method for 
+# to include associated models, use the same method for
 #creating associations also you can re-name the association with a key.
   belongs_to :user, key: :painter
   has_many :comments
@@ -19,7 +19,7 @@ class ArtSerializer < ActiveModel::Serializer
     :id,
     :body,
     :created_at,
-    :updated_at 
+    :updated_at
   )
   end
 
@@ -27,5 +27,5 @@ class ArtSerializer < ActiveModel::Serializer
     object.likes.count
   end
 
- 
+
 end

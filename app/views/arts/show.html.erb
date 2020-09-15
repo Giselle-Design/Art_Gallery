@@ -1,9 +1,9 @@
 
-<div class="container mt-5">
-   <p class="text-center text-white" id="notice"><%= notice %></p>
+<div class="container mt-3">
+   <p class="text-center" id="notice"><%= notice %></p>
 </div>
 
-<div class="container my-5">
+<div class="container mt-5 mb-5">
 <div class="card mb-3 p-3">
   <%= image_tag @art.image.variant(resize: '500X500'), class: "card-img-top"  if @art.image.attached? %>
   <div class="card-body">
@@ -94,5 +94,24 @@
   .liked {
     float: right
   }
+
+
+
+
+  .text-center {
+    font-family: Playball;
+    font-size: 30px;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  .card-title{
+    font-family: Playball;
+    font-size: 30px;
+  }
+
+
 
 </style>

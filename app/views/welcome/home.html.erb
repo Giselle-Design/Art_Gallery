@@ -1,4 +1,6 @@
 
+ <p class="text-center text-black mt-3" id="notice"><%= notice %></p>
+
 <div class="container mt-5">
  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="2000">
    <div class="carousel-inner mt-4" >
@@ -211,10 +213,9 @@
   }
 
   body {
-    /* background-color: #ffe6cc; */
-    background: #FFEFBA;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #FFEFBA;
+    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+    background: linear-gradient(to right, #FFFFFF, #FFEFBA);
   }
   .embed-responsive{
     height:400px;
@@ -225,5 +226,23 @@
    color: green;
    font-size: 2em;
  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    color: black;
+  }
+
+  .text-center {
+    font-family: Playball;
+    font-size: 30px;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  .text-success{
+    font-family: Playball;
+  }
 
 </style>

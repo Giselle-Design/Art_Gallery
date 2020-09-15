@@ -1,4 +1,12 @@
 
+
+
+<div class="container mt-5">
+<h2 class="text-font text-white ml-1">Search Museum</h2>
+        <input class="ml-1" id="search-text" type="text" placeholder="Write Your Title">
+</div>
+
+
 <div class="first container">
 <div class="row row-cols-1 row-cols-md-2">
   <div class="col mb-4">
@@ -27,7 +35,7 @@
           <small>Address: Rue de Rivoli, 75001 Paris, France</small>
            <br>
           <small><strong>Tickets: €0–17</strong></small>
-           
+
       </div>
     </div>
   </div>
@@ -65,20 +73,59 @@
 
 
 
+<script>
+
+   function fillter (obj, searchPhrase){
+     return  obj.children[1].children[0].innerText.toLowerCase().includes(searchPhrase.toLowerCase())
+   }
+
+
+  const cards = document.querySelectorAll('.card')
+
+
+
+  const renderCards = function (cards, searchPhrase) {
+    cards.forEach(function (card) {
+      card.classList.remove('d-none')
+      console.dir(card)
+      if (! fillter(card, searchPhrase)) {
+       card.classList.add('d-none')
+
+      }
+    })
+  }
+
+  document.querySelector('#search-text').addEventListener('input', function (e) {
+    const searchPhrase = e.target.value
+    renderCards(cards, searchPhrase)
+})
+
+</script>
 
 
 <style media="screen">
 
   body{
-    background: #bdc3c7;  
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  
-    background: linear-gradient(to right, #2c3e50, #bdc3c7); 
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
 
   }
 
   .first {
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 100px;
   }
+
+
+  .card-title{
+    font-family: Playball;
+  }
+
+
+  .text-font{
+      font-family: Playball;
+  }
+
 
 </style>
