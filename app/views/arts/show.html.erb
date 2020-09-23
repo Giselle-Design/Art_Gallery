@@ -5,7 +5,7 @@
 
 <div class="container mt-5 mb-5">
 <div class="card mb-3 p-3">
-  <%= image_tag @art.image.variant(resize: '500X500'), class: "card-img-top"  if @art.image.attached? %>
+  <%= image_tag @art.image.variant(resize: '600X600'),  style:'width:100%; height:100%', class: "card-img-top"  if @art.image.attached? %>
   <div class="card-body">
     <h5 class="card-title"><%= @art.title %></h5>
     <p class="card-text"><%= @art.description %></p>

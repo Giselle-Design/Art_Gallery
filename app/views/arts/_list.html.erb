@@ -1,8 +1,8 @@
 
 
 <div class="container">
-<h2 class="text-font text-white ml-4">Search Your Title</h2>
-        <input class="ml-4" id="search-text" type="text" placeholder="Write Your Title">
+<h2 class="text-font text-white ml-4">Search Your Name</h2>
+        <input class="ml-4" id="search-text" type="text" placeholder="Jon Snow">
 </div>
 
 <div class="first container">
@@ -13,11 +13,15 @@
             <div class="card-body">
                <h5 class="card-title"><%= art.title.truncate(50) %></h5>
                 <p class="card-text"><%= art.description.truncate(30) %></p>
+                <p class="text-muted"><strong><%= art.user.full_name %></strong></p>
+
                  <div class="">
                    <%= link_to 'Read More', art, class: 'btn btn-primary mb-2' %>
-                   <small class="right"><strong>Liked <%= art.likes.count %></strong></small>
+                   <button type="button" class="btn btn-danger right">
+                           <i class="fas fa-heart"></i><span class="ml-2 badge badge-light"><%= art.likes.count %></span></button>
                      <% if art.comments_count %>
-                     <small class="right mr-3"><strong>Comments  <%= art.comments_count %></strong></small>
+                     <button type="button" class="btn btn-warning right mr-2">
+                             <i class="fas fa-comments"></i><span class="ml-2 badge badge-light"><%= art.comments_count %></span></button>
                      <% end %>
                  </div>
               </div>
@@ -33,7 +37,7 @@
 <script>
 
    function fillter (obj, searchPhrase){
-     return  obj.children[1].children[0].innerText.toLowerCase().includes(searchPhrase.toLowerCase())
+     return  obj.children[1].children[2].innerText.toLowerCase().includes(searchPhrase.toLowerCase())
    }
 
 
@@ -42,8 +46,8 @@
 
   const renderCards = function (cards, searchPhrase) {
     cards.forEach(function (card) {
+       // # console.dir(card)
       card.classList.remove('d-none')
-      console.dir(card)
       if (! fillter(card, searchPhrase)) {
        card.classList.add('d-none')
       }
@@ -56,15 +60,6 @@
 })
 
 </script>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -97,6 +92,10 @@
 
   .text-font{
       font-family: Playball;
+  }
+
+  .fa-comments {
+    color: white;
   }
 
 </style>
