@@ -23,6 +23,9 @@ gem 'cancancan', '~> 3.1'
 gem 'bootstrap', '~> 4.5'
 gem 'fontawesome-rails', '~> 4.0', '>= 4.0.3.2'
 gem "mini_magick"
+gem 'faker'
+gem 'rails_admin', '~> 2.0', '>= 2.0.2'
+gem 'cowsay', '~> 0.3.0'
 
 
 
@@ -45,11 +48,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'cowsay', '~> 0.3.0'
+ 
   gem 'pry'
   gem 'pry-rails'
-  gem 'faker'
-  gem 'rails_admin', '~> 2.0', '>= 2.0.2'
+ 
+ 
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
