@@ -23,6 +23,9 @@ gem 'cancancan', '~> 3.1'
 gem 'bootstrap', '~> 4.5'
 gem 'fontawesome-rails', '~> 4.0', '>= 4.0.3.2'
 gem "mini_magick"
+gem 'faker'
+gem 'rails_admin', '~> 2.0', '>= 2.0.2'
+gem 'cowsay', '~> 0.3.0'
 
 
 
