@@ -12,88 +12,90 @@
 
 <body>
 
-<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
- <i class="change fas fa-paint-brush ml-5"></i><%= link_to 'Art Gallery',
- root_path, class: 'navbar-brand ml-1 mr-5 mt-1'%>
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-  data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-  aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-  </button>
+     <i class="change fas fa-paint-brush ml-4 d-none d-lg-block"></i><%= link_to 'Art Gallery',
+       root_path, class: 'navbar-brand ml-1 mr-5 mt-1'%>
 
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+      aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <% if user_signed_in? %>
-             <li class="nav-item">
-               <i class="change fas fa-home mt-3 ml-1"></i><%= link_to 'Home', home_path,
-               class: 'navbar-brand nav-link ml-1'%>
-             </li>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
 
-             <li class="nav-item">
-               <i class="change fas fa-globe-africa mt-3 ml-1"></i><%= link_to 'Museum', museum_path,
-               class: 'navbar-brand nav-link ml-1'%>
-             </li>
+            <% if user_signed_in? %>
 
-             <li class="nav-item">
-               <i class="change fas fa-mask mt-3 ml-1"></i><%= link_to 'Arts', arts_path,
-               class: 'navbar-brand nav-link ml-1'%>
-             </li>
+                 <li class="nav-item">
+                   <i class="change fas fa-globe-africa mt-3 ml-1 "></i><%= link_to 'Museum', museum_path,
+                   class: 'navbar-brand nav-link ml-1'%>
+                 </li>
 
-             <li class="nav-item">
-               <i class="change far fa-images mt-3 ml-1"></i><%= link_to 'Create Art', new_art_path,
-               class: 'navbar-brand nav-link ml-1'%>
-             </li>
+                 <li class="nav-item">
+                   <i class="change fas fa-mask mt-3 ml-1"></i><%= link_to 'Arts', arts_path,
+                   class: 'navbar-brand nav-link ml-1'%>
+                 </li>
+
+                 <li class="nav-item">
+                   <i class="change far fa-images mt-3 ml-1"></i><%= link_to 'Create Art', new_art_path,
+                   class: 'navbar-brand nav-link ml-1'%>
+                 </li>
 
 
-              <li class="nav-item">
-                <i class="change fas fa-tape mt-3 ml-1"></i><%= link_to 'API', api_v1_arts_path,
-                class: 'navbar-brand nav-link ml-1'%>
-              </li>
+                  <li class="nav-item">
+                    <i class="change fas fa-tape mt-3 ml-1"></i><%= link_to 'API', api_v1_arts_path,
+                    class: 'navbar-brand nav-link ml-1'%>
+                  </li>
 
-              <li class="nav-item">
-                <i class="change fas fa-palette"></i><a href="https://giselle-palette-of-colors.herokuapp.com/"
-                class="navbar-brand nav-link mt-2 ml-1">Pallete</a>
-              </li>
+                  <li class="nav-item">
+                    <i class="change fas fa-palette"></i><a href="https://giselle-palette-of-colors.herokuapp.com/"
+                    class="navbar-brand nav-link mt-2 ml-1">Pallete</a>
+                  </li>
 
-               <li class="nav-item">
-                <i class="change fas fa-power-off mt-3 ml-1"></i><%= link_to "Log Out", session_path,
-                method: :delete, class: 'nav-link navbar-brand ml-1' %>
-              </li>
+                   <li class="nav-item">
+                    <i class="change fas fa-power-off mt-3 ml-1"></i><%= link_to "Log Out", session_path,
+                    method: :delete, class: 'nav-link navbar-brand ml-1' %>
+                  </li>
 
-            <li class="nav-item dropdown">
-               <a class = "nav-link dropdown-toggle mt-1 mr-5" id="navbarDropdownMenuLink" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= current_user.full_name%></a>
-               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <%= link_to "Favourite Arts", liked_arts_path,  class: 'dropdown-item' %>
-                    <% if current_user.is_admin? %>
-                        <%= link_to "Panel", rails_admin_path,  class: 'dropdown-item' %>
-                    <% end %>
-               </div>
-            </li>
-        <% else %>
-            <li class="nav-item">
-             <i class="change fas fa-user-plus mt-2 ml-1"></i><%= link_to 'Sign Up', new_user_path,
-             class: 'navbar-brand nav-link ml-1' %>
-            </li>
+                <li class="nav-item dropdown">
+                   <a class = "nav-link dropdown-toggle mt-1 mr-5" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= current_user.full_name%></a>
+                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <%= link_to "Favourite Arts", liked_arts_path,  class: 'dropdown-item' %>
+                        <% if current_user.is_admin? %>
+                            <%= link_to "Panel", rails_admin_path,  class: 'dropdown-item' %>
+                        <% end %>
+                   </div>
+                </li>
+            <% else %>
 
-            <li class="nav-item ">
-             <i class="change far fa-hand-point-right mt-2 ml-1"></i><%= link_to "Sign In", new_session_path,
-             class: 'navbar-brand nav-link ml-1' %>
-            </li>
-        <% end %>
-    </ul>
+                <li class="nav-item">
+                  <i class="change fas fa-home mt-2 ml-1"></i><%= link_to 'Home', home_path,
+                  class: 'navbar-brand nav-link ml-1'%>
+                </li>
+                  <li class="nav-item">
+                   <i class="change fas fa-user-plus mt-2 ml-1"></i><%= link_to 'Sign Up', new_user_path,
+                   class: 'navbar-brand nav-link ml-1' %>
+                  </li>
+                <li class="nav-item ">
+                 <i class="change far fa-hand-point-right mt-2 ml-1"></i><%= link_to "Sign In", new_session_path,
+                 class: 'navbar-brand nav-link ml-1' %>
+                </li>
+            <% end %>
+          </ul>
+      </div>
+    </nav>
 
-  </div>
-</nav>
+
 
 
 
   <%= yield %>
 
-  
+
 
   </body>
 </html>
@@ -106,6 +108,10 @@
 #mainNavbar {
     font-size: 1.2rem;
     font-weight: 100;
+}
+
+#mainNavbar {
+  margin: 0-auto;
 }
 
 #mainNavbar .nav-link {

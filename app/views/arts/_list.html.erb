@@ -8,25 +8,24 @@
 <div class="first container">
   <div class="row justify-content-around">
      <% @arts.each do |art| %>
-        <div class="card  col-md-5 my-2">
-          <%= image_tag art.image.variant(resize: '500X500'), class: 'card-img-top mt-3' if art.image.attached? %>
+        <div class="card  col-md-5 mx-2 my-2">
+          <%= image_tag art.image.variant(resize: '500X500'), class: 'card-img-top mt-3 d-none d-md-block' if art.image.attached? %>
             <div class="card-body">
                <h5 class="card-title"><%= art.title.truncate(50) %></h5>
                 <p class="card-text"><%= art.description.truncate(30) %></p>
                 <p class="text-muted"><strong><%= art.user.full_name %></strong></p>
-
                  <div class="">
                    <%= link_to 'Read More', art, class: 'btn btn-primary mb-2' %>
-                   <button type="button" class="btn btn-danger right">
-                           <i class="fas fa-heart"></i><span class="ml-2 badge badge-light"><%= art.likes.count %></span></button>
-                     <% if art.comments_count %>
-                     <button type="button" class="btn btn-warning right mr-2">
-                             <i class="fas fa-comment-dots"></i><span class="ml-2 badge badge-light"><%= art.comments_count %></span></button>
-                     <% end %>
+                   <% if art.comments_count %>
+                   <button type="button" class="btn btn-warning right ">
+                           <i class="fas fa-comment-dots"></i><span class="ml-2 badge badge-light"><%= art.comments_count %></span></button>
+                   <% end %>
+                   <button type="button" class="btn btn-danger right d-none d-md-block mr-2">
+                      <i class="fas fa-heart"></i><span class="ml-2 badge badge-light"><%= art.likes.count %></span></button>
                  </div>
-              </div>
+            </div>
         </div>
-      <% end %>
+    <% end %>
   </div>
 </div>
 
